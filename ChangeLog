@@ -1,0 +1,8 @@
+Sat May  9 01:15:22 MEST 1998  Raphael_Manfredi <Raphael_Manfredi@grenoble.hp.com>
+. Description:
+
+	Revision history for Perl extension File::Lock::Simple
+
+	0.1  Fri May  8 16:36:11 1998
+		- original version; created by h2xs 1.18
+

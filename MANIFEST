@@ -1,0 +1,6 @@
+README                    Read this first
+MANIFEST                  This shipping list
+ChangeLog                 List of changes
+Makefile.PL               Generic Makefile template
+Simple.pm                 The module itself
+t/basic.t                 Basic tests
