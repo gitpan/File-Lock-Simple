@@ -1,18 +1,8 @@
 ;# $Id
 ;#
-;#  Copyright (c) 1998, Raphael Manfredi
-;#  
-;#  You may redistribute only under the terms of the Artistic License,
-;#  as specified in the README file that comes with the distribution.
+;#  @COPYRIGHT@
 ;#
 ;# $Log: Simple.pm,v $
-;# Revision 0.1.1.2  1998/05/11  16:12:11  ram
-;# patch2: forgot to update version number, grr...
-;#
-;# Revision 0.1.1.1  1998/05/11  15:59:57  ram
-;# patch1: forgot to restore umask when lock was successful
-;# patch1: changed default values for wafter and wmin
-;#
 ;# Revision 0.1  1998/05/08 23:28:08  ram
 ;# Baseline for first alpha release.
 ;#
@@ -34,7 +24,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = ();
 @EXPORT_OK = qw(lock trylock unlock);
-$VERSION = '0.102';
+$VERSION = '0.100';
 
 $File::Lock::Simple::LOCKER = undef;	# Default locking object
 
@@ -69,14 +59,14 @@ sub make {
 	$self->configure(@hlist);
 
 	# Set configuration defaults
-	$self->{'max'} = 30 unless $self->{'max'};
+	$self->{'max'} = 20 unless $self->{'max'};
 	$self->{'delay'} = 2 unless $self->{'delay'};
 	$self->{'hold'} = 3600 unless $self->{'hold'};
 	$self->{'ext'} = '.lock' unless defined $self->{'ext'};
 	$self->{'nfs'} = 0 unless defined $self->{'nfs'};
 	$self->{'warn'} = 1 unless defined $self->{'warn'};
 	$self->{'wfunc'} = \&core_warn unless defined $self->{'wfunc'};
-	$self->{'wmin'} = 15 unless $self->{'wmin'};
+	$self->{'wmin'} = 20 unless $self->{'wmin'};
 	$self->{'wafter'} = 20 unless $self->{'wafter'};
 
 	return $self;
@@ -291,7 +281,6 @@ sub _acs_lock {		## private
 		}
 	}
 
-	umask($mask);
 	return $locked;
 }
 
@@ -486,7 +475,7 @@ is 3600 seconds. Specifying 0 prevents any forced unlocking.
 =item I<max>
 
 Amount of times we retry locking when the file is busy, sleeping I<delay>
-seconds between attempts. Defaults to 30.
+seconds between attemps..
 
 =item I<nfs>
 
@@ -513,7 +502,7 @@ it points to Perl's C<warn()> function.
 
 The minimal amount of time when waiting for a lock after which a first
 warning must be emitted, if I<warn> is true. After that, a warning will
-be emitted every I<wafter> seconds. Defaults to 15.
+be emitted every I<wafter> seconds. Defaults to 20.
 
 =back
 
