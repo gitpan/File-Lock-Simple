@@ -1,3 +1,17 @@
+Mon May 11 18:12:18 METDST 1998   Raphael Manfredi <Raphael_Manfredi@grenoble.hp.com>
+
+. Description:
+
+	Forgot to update version number, grr...
+
+Mon May 11 18:00:29 METDST 1998   Raphael Manfredi <Raphael_Manfredi@grenoble.hp.com>
+
+. Description:
+
+	Forgot to restore umask when lock was successful
+	Changed default values for wafter and wmin.
+	Added patchlevel.h.
+
 Sat May  9 01:15:22 MEST 1998  Raphael_Manfredi <Raphael_Manfredi@grenoble.hp.com>
 . Description:
 
